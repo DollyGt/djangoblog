@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Profile</h3>
+
+<p>You are logged in as:</p>
+<p>{{user.username}}</p>
+<p>{{user.email}}</p>
+
+<h3> Liked Posts</h3>
+
+{% for post in user.liked_posts.all %}
+
+<p><a href='#'>{{ post.title }}</a></p>
+  
+<!--<div class="row">-->
+<!--            <div class="col-md-2 col-sm-3 text-center">-->
+<!--                <a class="story-img" href="#">-->
+<!--                    <img src="{{ MEDIA_URL}}avatars/{{post.author.username}}.jpg" class="img-circle">-->
+<!--                </a>-->
+<!--                <p><span class="boldtext">Author:</span>{{ post.author.username }}</p>-->
+<!--            </div>-->
+<!--            <div class="col-md-10 col-sm-9">-->
+<!--                <h3>{{ post.title }}</h3>-->
+<!--                <div class="row">-->
+<!--                    <div class="col-xs-9">-->
+<!--                        <p>{{ post.content|truncatewords:30 }}</p>-->
+<!--                        <p><a href="{% url 'post_detail' post.id %}"  class="btn btn-default">Read more</a></p>-->
+<!--                        <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>-->
+<!--                        <p><span class="boldtext">Views:</span> {{post.views}} | <span class="boldtext">Tag:</span> {{ post.tag }} | <span class="boldtext">Likes:</span> {{post.likes.all | length}} | </p>-->
+                       
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <hr>-->
+ {% endfor %}
+{% endblock content %}

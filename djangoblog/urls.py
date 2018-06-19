@@ -1,5 +1,4 @@
 """djangoblog URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
 Examples:
@@ -14,14 +13,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
 from django.conf.urls import url
+from django.urls import path, include
 from posts import urls as posts_urls
+from accounts import urls as accounts_urls
 from django.views.static import serve
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include(posts_urls)), 
+    path('accounts/', include(accounts_urls)),
+    path('', include(posts_urls)),
     path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT})
 ]
